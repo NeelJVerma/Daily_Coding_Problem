@@ -1,3 +1,9 @@
+"""
+Problem statement: Implement an autocomplete system. That is, given a query
+string s and a list of words in a dictionary, return all words that have s as
+a prefix.
+"""
+
 class TrieNode:
     def __init__(self):
         self.children = [None] * 26
@@ -54,6 +60,8 @@ def autocomplete_helper(root, word):
 
             autocomplete_helper(root.children[i], word)
 
+            word.pop(-1)
+
 def autocomplete(root, word):
     word = list(word)
     crawler = root
@@ -89,4 +97,4 @@ insert(root, 'fed')
 insert(root, 'npc')
 insert(root, 'aqr')
 
-autocomplete(root, 'abc')
+autocomplete(root, 'a')
