@@ -7,41 +7,41 @@ characters is "bcb", so your function should return 3.
 """
 
 def get_all_substrings(s):
-	substrings = []
+    substrings = []
 
-	for i in range(len(s)):
-		for j in range(i + 1, len(s) + 1):
-			substrings.append(s[i:j])
+    for i in range(len(s)):
+        for j in range(i + 1, len(s) + 1):
+            substrings.append(s[i:j])
 
-	return substrings
+    return substrings
 
 def longest_substring_helper(l, k):
-	counts = {}
+    counts = {}
 
-	for substring in l:
-		characters = set()
-		count = 0
+    for substring in l:
+        characters = set()
+        count = 0
 
-		for character in substring:
-			if character not in characters:
-				characters.add(character)
-				count += 1
+        for character in substring:
+            if character not in characters:
+                characters.add(character)
+                count += 1
 
-		if count <= k:
-			counts[substring] = count
+        if count <= k:
+            counts[substring] = count
 
-	longest = 0
+    longest = 0
 
-	for substring in counts:
-		if len(substring) > longest:
-			longest = len(substring)
+    for substring in counts:
+        if len(substring) > longest:
+            longest = len(substring)
 
-	return longest
+    return longest
 
 def longest_substring(s, k):
-	substrings = get_all_substrings(s)
+    substrings = get_all_substrings(s)
 
-	return longest_substring_helper(substrings, k)
+    return longest_substring_helper(substrings, k)
 
 print(True if longest_substring('aaaaa', 2) == 5 else False)
 print(True if longest_substring('abcba', 2) == 3 else False)
