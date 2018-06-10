@@ -10,10 +10,6 @@ using namespace std;
 const int kMaxBits = 8;
 
 uint8_t SwapBits(uint8_t n) {
-  if (!n) {
-    return 1;
-  }
-
   for (int i = kMaxBits - 1; i >= 0; i -= 2) {
     uint8_t first_bit = (n >> i) & 1;
     uint8_t second_bit = (n >> (i - 1)) & 1;
