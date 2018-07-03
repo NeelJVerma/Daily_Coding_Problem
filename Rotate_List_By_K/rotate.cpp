@@ -4,25 +4,7 @@ Try solving this without creating a copy of the list. How many swap or move oper
 */
 
 #include <iostream>
-#include <unordered_map>
 using namespace std;
-
-void Rotate(int* arr, int size, int k) {
-  int actual_k = k % size;
-  unordered_map<int, int> index_to_data;
-
-  for (int i = 0; i < size; i++) {
-    index_to_data[i] = arr[i];
-  }
-
-  for (int i = 0; i < size; i++) {
-    if (i >= actual_k) {
-      arr[i - actual_k] = index_to_data[i];
-    } else {
-      arr[size + i - actual_k] = index_to_data[i];
-    }
-  }
-}
 
 void PrintArray(int* arr, int size) {
   for (int i = 0; i < size; i++) {
@@ -30,6 +12,23 @@ void PrintArray(int* arr, int size) {
   }
 
   cout << endl;
+}
+
+void Reverse(int* arr, int start, int end) {
+  while (start < end) {
+    int temp = arr[start];
+    arr[start] = arr[end];
+    arr[end] = temp;
+    start++;
+    end--;
+  }
+}
+
+void Rotate(int* arr, int size, int k) {
+  k %= size;
+  Reverse(arr, 0, size - 1);
+  Reverse(arr, size - k, size - 1);
+  Reverse(arr, 0, size - k - 1);
 }
 
 int main() {
